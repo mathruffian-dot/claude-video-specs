@@ -130,6 +130,8 @@
 
 ## 階段 3｜試作
 
+> ⚠️ **開工前先讀 [GOTCHAS.md](GOTCHAS.md)**，尤其 A 流程、B 字幕、D Playwright、E FFmpeg 四節。
+
 ### 試作前
 
 請使用者提供：
@@ -228,15 +230,21 @@
 
 ## 失敗排除
 
-如果跑到一半卡住：
+**完整踩坑清單見 [GOTCHAS.md](GOTCHAS.md)（開工前必讀）。** 高頻幾條：
 
-| 問題 | 處理 |
-|------|------|
-| Playwright 在 GDrive 壞掉 | 必須裝在 `%TEMP%/cvs-render/` |
-| Edge-TTS 被斷線 | 序列執行 + retry 3 次 |
-| 字體沒顯示 | 確認 `install/install_fonts.sh` 跑過 |
-| ffmpeg 找不到 | 重新檢查 PATH（Win 重開 terminal）|
-| KaTeX 沒渲染 | 確認 CDN 載入完成才呼叫 `renderMathInElement` |
+| 問題 | 處理 | 詳見 |
+|------|------|------|
+| Playwright 在 GDrive 壞掉 / npm install 失敗 | 裝在 `%TEMP%/cvs-render/` | GOTCHAS D-1 |
+| Edge-TTS 被斷線 | 序列執行 + retry 3 次 | — |
+| mux 後沒聲音 | ffmpeg 加 `-map 0:v:0 -map 1:a:0` | GOTCHAS E-2 |
+| 淡出時間點不對 | 用 `afade=...:st=` 不是 `ss` | GOTCHAS E-1 |
+| concat 讀不到中文路徑 | 相對路徑 + 在該目錄執行 | GOTCHAS E-3 |
+| 字體沒顯示 | HTML 要有 `@font-face` + 跑 install_fonts | GOTCHAS C-5 |
+| Python 中文崩潰（CP950）| 設 `PYTHONUTF8=1` | GOTCHAS F-1 |
+| PowerShell 中文路徑複製失敗 | 用 `Get-ChildItem \| Copy-Item` | GOTCHAS F-2 |
+| HyperFrames CLI 在 Node 24 crash | 降 Node 20 LTS 或用純 HTML 範本 | GOTCHAS C-4 |
+| KaTeX 沒渲染 | CDN 載入完成才呼叫 `renderMathInElement` | — |
+| 錄影第一幀殘留點擊遮罩 | click 後等 0.5–1s 再計時 | GOTCHAS D-3 |
 
 ---
 

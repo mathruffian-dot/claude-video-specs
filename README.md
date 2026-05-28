@@ -17,6 +17,7 @@
 claude-video-specs/
 ├── README.md                    ← 本檔（人類入口）
 ├── AGENTS.md                    ← AI agent 入口，5 階段 bootstrap
+├── GOTCHAS.md                   ← 踩坑筆記（開工前必讀）
 ├── LICENSE
 ├── specs/                       ← 三類影片規範（核心）
 │   ├── 01-活動紀錄影片.md
