@@ -56,9 +56,20 @@ claude-video-specs/
 當你（AI agent）看到這個 repo：
 
 1. 開啟 [AGENTS.md](AGENTS.md)
-2. 從**階段 1 環境檢查**開始
-3. 每個階段都要**主動詢問使用者**再進下一步
-4. 不要悶頭做，每完成一個里程碑就回報
+2. **先讀階段 0 確認自己的相容性**
+3. 從**階段 1 環境檢查**開始
+4. 每個階段都要**主動詢問使用者**再進下一步
+5. 不要悶頭做，每完成一個里程碑就回報
+
+### 已測試 / 相容性
+
+| Agent | AGENTS.md | Skill 路徑 | 狀態 |
+|-------|-----------|----------|------|
+| **Claude Code**（CLI + Desktop）| ✅ 原生 | `~/.claude/skills/` | 完整支援 |
+| **GPT Codex**（CLI）| ✅ 原生 | `~/.agents/skills/` | 完整支援 |
+| **OpenCode**（CLI）| ✅ 透過 `opencode.json` 引導 | `~/.config/opencode/skills/` | 已附 opencode.json |
+| **Antigravity**（Desktop）| ⚠️ 部分 | `~/.gemini/antigravity/skills/` | 可能需手動匯入 |
+| **Web-only agents** | ❌ 無 shell | n/a | 只能參考 specs，無法跑 install |
 
 ---
 
@@ -69,17 +80,35 @@ claude-video-specs/
 git clone https://github.com/mathruffian-dot/claude-video-specs.git
 cd claude-video-specs
 
-# 2. 環境檢查
-bash install/check_env.sh
+# 2. 環境檢查 + 安裝（任選一個跑法）
+#  選項 A：bash（macOS / Linux / Windows Git Bash）
+bash install/check_env.sh && bash install/install_all.sh
 
-# 3. 缺啥裝啥（或一鍵裝全部）
-bash install/install_all.sh
+#  選項 B：PowerShell（Windows 沒裝 Git Bash 的用）
+powershell -ExecutionPolicy Bypass -File install/install_all.ps1
 
-# 4. 對你的 Claude / OpenCode / 其他 AI agent 說：
+#  選項 C：Python（全平台通用，無需 bash）
+python install/setup.py check
+python install/setup.py all
+
+# 3. 對你的 Claude / Codex / OpenCode / Antigravity 說：
 #    「啟動 claude-video-specs」
 #    或直接：「我要做一支教學影片」
 
 # Agent 會自動依 AGENTS.md 5 階段流程進行
+```
+
+### 打包成技能（任一 agent）
+
+```bash
+# Bash 版
+bash install/pack_skill.sh my-video 02 --target=claude
+bash install/pack_skill.sh my-video 02 --target=codex
+bash install/pack_skill.sh my-video 02 --target=opencode
+bash install/pack_skill.sh my-video 02 --target=antigravity
+
+# Python 版（同樣四個 target）
+python install/setup.py pack my-video 02 --target=claude
 ```
 
 ---

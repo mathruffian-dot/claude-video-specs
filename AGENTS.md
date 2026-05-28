@@ -5,6 +5,43 @@
 
 ---
 
+## 階段 0｜識別你自己（agent 相容性）
+
+不同 agent 環境有差異。**先確認你是哪一種**，再依下表調整動作：
+
+| Agent | 你目前是否能原生讀本檔 | Skill 安裝路徑 | 特殊備註 |
+|-------|----------------------|---------------|---------|
+| **Claude Code**（CLI / Desktop）| ✅ 直接讀 | `~/.claude/skills/<name>/SKILL.md` | 預設情境 |
+| **GPT Codex**（CLI）| ✅ 直接讀 | `~/.agents/skills/<name>/SKILL.md`（或 `.agents/skills/` 專案內）| YAML frontmatter 同 Claude |
+| **OpenCode**（CLI）| ⚠️ 透過 `opencode.json` 引導讀 | `~/.config/opencode/skills/<name>/` 或 `.opencode/skills/` | 已附 opencode.json 自動引導 |
+| **Antigravity**（Desktop IDE）| ⚠️ 不確定，請使用者貼本檔給你 | `~/.gemini/antigravity/skills/<name>/` 或 `.agents/skills/` | UI 可能需要手動匯入 |
+
+### CLI vs Desktop 差異
+
+- **CLI 版**：通常有完整 shell 權限，可直接跑 `install/*.sh`
+- **Desktop / IDE 版**：可能需要先在內建終端機跑指令，或請使用者手動執行某些命令
+- **Web 版**（如 chat.openai.com、claude.ai）：通常**無 shell**，無法跑安裝腳本。請告知使用者本 repo 需 CLI 環境，並轉發 `specs/` 內的規範供他手動參考
+
+### Windows 特殊提醒
+
+- `install/*.sh` 需要 **bash**。Windows 用戶用 **Git Bash**（隨 Git for Windows 安裝）
+- 若使用者只有 PowerShell，請用 `install/setup.py`（Python orchestrator，跨平台）
+- 環境變數 `%TEMP%`（cmd/PS）等於 `$TMPDIR` / `$TEMP`（bash）
+
+### 工具名稱對照
+
+不同 agent 的工具名不同，請翻譯為你的工具：
+
+| 動作 | Claude Code | Codex | OpenCode | Antigravity |
+|------|-------------|-------|----------|-------------|
+| 執行 shell | `Bash` | `shell` | `bash` | 內建終端機 |
+| 讀檔 | `Read` | `read_file` | `read` | `read_file` |
+| 寫檔 | `Write` | `apply_patch` | `write` | `write_file` |
+| 編輯 | `Edit` | `apply_patch` | `edit` | `edit_file` |
+| 抓網頁 | `WebFetch` | `web_search` / `fetch` | `webfetch` | 內建瀏覽器 |
+
+---
+
 ## 啟動條件
 
 當使用者下達以下指令時，你應**立即**讀取本文件並啟動 5 階段流程：
