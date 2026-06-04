@@ -3,7 +3,7 @@
 # 用法：bash install/install_fonts.sh
 set -e
 
-UPSTREAM="https://github.com/ButTaiwan/genseki-font/raw/master/TW"
+UPSTREAM="https://raw.githubusercontent.com/ButTaiwan/genseki-font/master/otf/TW"
 WANT=("GenSekiGothic2TW-H.otf" "GenSekiGothic2TW-B.otf" "GenSekiGothic2TW-M.otf")
 
 # 決定安裝目標

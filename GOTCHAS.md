@@ -123,6 +123,11 @@ ffmpeg -y -i video.webm -i master_audio.mp3 \
 
 ## F. Windows / PowerShell / 編碼
 
+### F-0 🪟 源石黑體下載路徑 404
+- **現象**：安裝器下載 `GenSekiGothic2TW-H.otf` 時回 `HTTP Error 404: Not Found`。
+- **原因**：ButTaiwan/genseki-font 的字體檔案已移到 `otf/TW/`，舊的 `raw/master/TW` 路徑失效。
+- **教訓**：源石黑體下載根路徑要使用 `https://raw.githubusercontent.com/ButTaiwan/genseki-font/master/otf/TW`。
+
 ### F-1 🪟 CP950 編碼導致 Python 崩潰
 - **現象**：`UnicodeEncodeError` 崩潰，印不出 `✓` `❌` 等符號。
 - **原因**：Windows CMD/PowerShell 預設 CP950，無法解碼 Python 輸出的 UTF-8 特殊符號。

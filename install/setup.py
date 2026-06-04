@@ -18,7 +18,7 @@ REPO = Path(__file__).resolve().parent.parent
 PLATFORM = platform.system()  # Windows / Darwin / Linux
 
 FONT_FILES = ["GenSekiGothic2TW-H.otf", "GenSekiGothic2TW-B.otf", "GenSekiGothic2TW-M.otf"]
-FONT_UPSTREAM = "https://github.com/ButTaiwan/genseki-font/raw/master/TW"
+FONT_UPSTREAM = "https://raw.githubusercontent.com/ButTaiwan/genseki-font/master/otf/TW"
 
 
 def font_target_dir() -> Path:
