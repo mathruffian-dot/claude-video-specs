@@ -32,17 +32,17 @@ jobs:
         run: |
           set -u
           cat > /tmp/exclude.txt <<'EXC'
-.gitignore
-AGENTS.md
-README.md
-examples/01-marathon-light/README.md
-install/install_all.ps1
-install/install_fonts.sh
-install/setup.py
-specs/01-活動紀錄影片.html
-specs/01-活動紀錄影片.md
-specs/03-社群科普影片.md
-EXC
+          .gitignore
+          AGENTS.md
+          README.md
+          examples/01-marathon-light/README.md
+          install/install_all.ps1
+          install/install_fonts.sh
+          install/setup.py
+          specs/01-活動紀錄影片.html
+          specs/01-活動紀錄影片.md
+          specs/03-社群科普影片.md
+          EXC
 
           list() {  # $1=根目錄 → 相對路徑清單
             ( cd "$1" 2>/dev/null || { echo "找不到目錄 $1" >&2; exit 2; }
