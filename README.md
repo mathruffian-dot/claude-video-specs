@@ -69,7 +69,7 @@ claude-video-specs/
 | **Claude Code**（CLI + Desktop）| ✅ 原生 | `~/.claude/skills/` | 完整支援 |
 | **GPT Codex**（CLI）| ✅ 原生 | `~/.agents/skills/` | 完整支援 |
 | **OpenCode**（CLI）| ✅ 透過 `opencode.json` 引導 | `~/.config/opencode/skills/` | 已附 opencode.json |
-| **Antigravity**（Desktop）| ⚠️ 部分 | `~/.gemini/antigravity/skills/` | 可能需手動匯入 |
+| **Antigravity**（Desktop）| ✅（AntiGravity 2）| `.agents/skills/`（專案）或 `~/.agents/skills/`（全域） | 讀 AGENTS.md |
 | **Web-only agents** | ❌ 無 shell | n/a | 只能參考 specs，無法跑 install |
 
 ---

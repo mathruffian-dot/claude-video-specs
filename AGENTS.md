@@ -14,7 +14,7 @@
 | **Claude Code**（CLI / Desktop）| ✅ 直接讀 | `~/.claude/skills/<name>/SKILL.md` | 預設情境 |
 | **GPT Codex**（CLI）| ✅ 直接讀 | `~/.agents/skills/<name>/SKILL.md`（或 `.agents/skills/` 專案內）| YAML frontmatter 同 Claude |
 | **OpenCode**（CLI）| ⚠️ 透過 `opencode.json` 引導讀 | `~/.config/opencode/skills/<name>/` 或 `.opencode/skills/` | 已附 opencode.json 自動引導 |
-| **Antigravity**（Desktop IDE）| ⚠️ 不確定，請使用者貼本檔給你 | `~/.gemini/antigravity/skills/<name>/` 或 `.agents/skills/` | UI 可能需要手動匯入 |
+| **Antigravity**（Desktop IDE）| ✅（AntiGravity 2）| 專案 `.agents/skills/<name>/`，全域 `~/.agents/skills/<name>/` 或 `.agents/skills/` | UI 可能需要手動匯入 |
 
 ### CLI vs Desktop 差異
 
