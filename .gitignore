@@ -3,6 +3,7 @@
 **/concat.txt
 **/node_modules/
 **/package-lock.json
+assets/fonts/
 
 # OS
 .DS_Store
